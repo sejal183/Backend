@@ -22,9 +22,13 @@ public class EmployeeService {
         this.salaryrepo = salaryrepo;
         this.employeerepo = employeerepo;
     }
-    public boolean login(Credentials credentials){
+    public Integer login(Credentials credentials){
         Optional<Employee> temp=employeerepo.findByEmail(credentials.username);
-        return temp.map(value -> value.getPassword().equals(credentials.password)).orElse(false);
+        if( temp.map(value -> value.getPassword().equals(credentials.password)).orElse(false)){
+            return temp.get().getId();
+        }else {
+            return -1;
+        }
     }
     public List<Salary> getSalaryDetails(SalaryDTO salaryDTO){
         Optional<Employee>emp=employeerepo.findById(salaryDTO.getEmployee_id());

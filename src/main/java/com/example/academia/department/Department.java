@@ -1,6 +1,7 @@
 package com.example.academia.department;
 
 import com.example.academia.employee.Employee;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;
@@ -21,6 +22,7 @@ public class Department {
     private Integer id;
     private String name;
     private Integer capacity;
+    @JsonIgnore
     @OneToMany(mappedBy = "department",cascade = CascadeType.ALL)
     private List<Employee> employee = new ArrayList<>();
 

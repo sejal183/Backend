@@ -34,7 +34,7 @@ public class Controller {
         }
 
         @PostMapping("/login")
-        public boolean login(@RequestBody Credentials credentials){ return employeeService.login(credentials); }
+        public Integer login(@RequestBody Credentials credentials){ return employeeService.login(credentials); }
         @PostMapping("/salary")
         public List<Salary> getSalaryDetails(@RequestBody SalaryDTO salaryDTO){return employeeService.getSalaryDetails(salaryDTO);
 
