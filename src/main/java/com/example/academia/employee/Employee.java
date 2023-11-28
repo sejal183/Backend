@@ -2,6 +2,7 @@ package com.example.academia.employee;
 
 import com.example.academia.department.Department;
 import com.example.academia.salary.Salary;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +29,7 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+    @JsonIgnore
     @OneToMany( mappedBy = "employee",cascade = CascadeType.ALL)
     private List<Salary> salary=new ArrayList<>();
 
